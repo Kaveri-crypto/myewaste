@@ -147,16 +147,82 @@
     </div>
   </div>
   <script src="script.js"></script>
+  
   <script>
+    // Global chart variable
+    let masterChart = null;
+
+    // Function to update chart colors based on current theme
+    function updateChartColors() {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      
+      // Define colors based on theme
+      const chartTextColor = isLight ? '#052e16' : '#FFFFFF';
+      const gridColor = isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+
+      if (masterChart) {
+        // Update Legend and Title colors
+        masterChart.options.plugins.legend.labels.color = chartTextColor;
+        masterChart.options.plugins.title.color = chartTextColor;
+
+        // Update X Axis colors
+        masterChart.options.scales.x.ticks.color = chartTextColor;
+        masterChart.options.scales.x.title.color = chartTextColor;
+        masterChart.options.scales.x.grid.color = gridColor;
+
+        // Update Y Axis colors
+        masterChart.options.scales.y.ticks.color = chartTextColor;
+        // Y grid is hidden in original options, but good to set if enabled later
+        masterChart.options.scales.y.grid.color = gridColor; 
+
+        // Apply updates
+        masterChart.update();
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
-      const htmlTag = document.documentElement; const isLight = htmlTag.classList.contains('light') || htmlTag.getAttribute('data-theme') === 'light';
-      let chartTextColor, gridColor;
-      if (isLight) { chartTextColor = '#14532d'; gridColor = 'rgba(0, 0, 0, 0.15)'; } else { chartTextColor = '#FFFFFF'; gridColor = 'rgba(255, 255, 255, 0.15)'; }
+      // Initial Setup
       const ctx = document.getElementById('masterChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'bar', data: { labels: ['Aware', 'Know Centers', 'Separate Batteries', 'Disposal: Scrap Dealer', 'Disposal: Store at Home', 'Disposal: Trash', "Barrier: Don't Know", 'Barrier: Inconvenient', 'Encourage: Easy Access', 'Encourage: Incentives'], datasets: [{ label: 'Yes / Positive (%)', data: [82, 33, 29, 0, 0, 0, 0, 0, 78, 55], backgroundColor: 'rgba(34, 197, 94, 0.7)', borderColor: 'rgba(34, 197, 94, 1)', borderWidth: 1 }, { label: 'No / Negative (%)', data: [18, 35, 27, 0, 0, 0, 0, 0, 0, 0], backgroundColor: 'rgba(239, 68, 68, 0.6)', borderColor: 'rgba(239, 68, 68, 1)', borderWidth: 1 }, { label: 'Behavior (%)', data: [0, 0, 0, 39, 25, 16, 68, 25, 0, 0], backgroundColor: 'rgba(245, 158, 11, 0.7)', borderColor: 'rgba(245, 158, 11, 1)', borderWidth: 1 }] },
-        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { color: chartTextColor } }, title: { display: true, text: 'E-Waste Survey Analysis', color: chartTextColor } }, scales: { x: { title: { display: true, text: 'Percentage (%)', color: chartTextColor }, grid: { color: gridColor }, ticks: { color: chartTextColor } }, y: { grid: { display: false }, ticks: { color: chartTextColor } } } }
+      
+      masterChart = new Chart(ctx, {
+        type: 'bar', 
+        data: { 
+          labels: ['Aware', 'Know Centers', 'Separate Batteries', 'Disposal: Scrap Dealer', 'Disposal: Store at Home', 'Disposal: Trash', "Barrier: Don't Know", 'Barrier: Inconvenient', 'Encourage: Easy Access', 'Encourage: Incentives'], 
+          datasets: [
+            { label: 'Yes / Positive (%)', data: [82, 33, 29, 0, 0, 0, 0, 0, 78, 55], backgroundColor: 'rgba(34, 197, 94, 0.7)', borderColor: 'rgba(34, 197, 94, 1)', borderWidth: 1 }, 
+            { label: 'No / Negative (%)', data: [18, 35, 27, 0, 0, 0, 0, 0, 0, 0], backgroundColor: 'rgba(239, 68, 68, 0.6)', borderColor: 'rgba(239, 68, 68, 1)', borderWidth: 1 }, 
+            { label: 'Behavior (%)', data: [0, 0, 0, 39, 25, 16, 68, 25, 0, 0], backgroundColor: 'rgba(245, 158, 11, 0.7)', borderColor: 'rgba(245, 158, 11, 1)', borderWidth: 1 }
+          ] 
+        },
+        options: { 
+          indexAxis: 'y', 
+          responsive: true, 
+          maintainAspectRatio: false, 
+          plugins: { 
+            legend: { position: 'top' }, // Color set by updateChartColors
+            title: { display: true, text: 'E-Waste Survey Analysis', font: { size: 16 } } 
+          }, 
+          scales: { 
+            x: { title: { display: true, text: 'Percentage (%)' } }, // Color set by updateChartColors
+            y: { grid: { display: false } } 
+          } 
+        }
       });
+
+      // Set initial colors based on current theme on load
+      updateChartColors();
+
+      // Observer to watch for theme changes (THE FIX)
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === "data-theme") {
+            updateChartColors();
+          }
+        });
+      });
+
+      // Start observing the <html> element for attribute changes
+      observer.observe(document.documentElement, { attributes: true });
     });
   </script>
 </body>
