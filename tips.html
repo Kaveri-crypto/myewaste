@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awareness Tips</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero-headline { background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s linear infinite; }
+    @keyframes shine { to { background-position: 200% center; } }
+    .graphical-header { display: inline-block; background: rgba(0, 255, 204, 0.05); border: 1px solid var(--card-border); padding: 10px 30px; border-radius: 50px; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(0, 255, 204, 0.1); transition: all 0.3s ease; }
+    .graphical-header:hover { border-color: var(--accent); box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); transform: translateY(-2px); }
+    .graphical-header h2 { margin: 0; border: none; font-size: 1.5rem; color: var(--accent); }
+    .cycle-container { position: relative; width: 100%; max-width: 800px; height: 800px; margin: 0 auto; }
+    .cycle-path { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 550px; height: 550px; border: 2px dashed var(--card-border); border-radius: 50%; opacity: 0.5; animation: rotate 60s linear infinite; }
+    @keyframes rotate { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    .cycle-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 220px; height: 220px; background: var(--accent-gradient); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; box-shadow: 0 0 60px var(--accent-glow); z-index: 10; border: 4px solid rgba(255,255,255,0.2); padding: 1rem; }
+    .cycle-step { position: absolute; width: 180px; height: 180px; top: 50%; left: 50%; background: var(--card-bg); border: 2px solid var(--card-border); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1rem; transition: all 0.3s ease; backdrop-filter: blur(5px); }
+    .cycle-step:hover { transform: scale(1.1); border-color: var(--accent); box-shadow: 0 0 30px var(--accent-glow); z-index: 20; background: rgba(0, 255, 204, 0.1); }
+    .step-1 { transform: rotate(0deg) translate(290px) rotate(0deg); margin: -90px; }
+    .step-2 { transform: rotate(60deg) translate(290px) rotate(-60deg); margin: -90px; }
+    .step-3 { transform: rotate(120deg) translate(290px) rotate(-120deg); margin: -90px; }
+    .step-4 { transform: rotate(180deg) translate(290px) rotate(-180deg); margin: -90px; }
+    .step-5 { transform: rotate(240deg) translate(290px) rotate(-240deg); margin: -90px; }
+    .step-6 { transform: rotate(300deg) translate(290px) rotate(-300deg); margin: -90px; }
+    .step-content { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.3; display: block; }
+    @media (max-width: 768px) { .cycle-container { height: 600px; max-width: 400px; } .cycle-path { width: 300px; height: 300px; } .cycle-center { width: 140px; height: 140px; font-size: 0.9rem; } .cycle-step { width: 100px; height: 100px; margin: -50px; padding: 0.5rem; } .step-1 { transform: rotate(0deg) translate(160px) rotate(0deg); } .step-2 { transform: rotate(60deg) translate(160px) rotate(-60deg); } .step-3 { transform: rotate(120deg) translate(160px) rotate(-120deg); } .step-4 { transform: rotate(180deg) translate(160px) rotate(-180deg); } .step-5 { transform: rotate(240deg) translate(160px) rotate(-240deg); } .step-6 { transform: rotate(300deg) translate(160px) rotate(-300deg); } .step-content { display: none; } }
+    .do-card { background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05)); border: 1px solid rgba(34, 197, 94, 0.3); border-left: 6px solid #22c55e; }
+    .dont-card { background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05)); border: 1px solid rgba(239, 68, 68, 0.3); border-left: 6px solid #ef4444; }
+    .list-graphic { display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem; padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.03); transition: 0.3s; }
+    .list-graphic:hover { background: rgba(255,255,255,0.08); transform: translateX(5px); }
+    .icon-circle { min-width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; }
+    .icon-green { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+    .icon-red { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+  </style>
+</head>
+<body>
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <nav class="nav-container"><a href="index.html" class="logo"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg><span>Clean</span>Tech</a>
+    <ul class="nav-links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="research.html" class="nav-link">Research</a></li><li><a href="tips.html" class="nav-link active">Tips</a></li><li><a href="survey.html" class="nav-link">Survey</a></li><li><a href="gallery.html" class="nav-link">Gallery</a></li><li><a href="chatbot.html" class="nav-link">Chatbot</a></li><li><a href="forum.html" class="nav-link">Forum</a></li><li><a href="resources.html" class="nav-link">Resources</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
+    <button id="themeToggle" class="theme-btn" onclick="toggleTheme()"></button>
+  </nav>
+
+  <div class="container">
+    <div class="page-section">
+      <div style="position: relative; border-radius: 24px; overflow: hidden; min-height: 450px; display: flex; align-items: center; justify-content: center;">
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1470&q=80" alt="Education Tips" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.3)); z-index: 1;"></div>
+        <div style="position: relative; z-index: 2; text-align: center; padding: 3rem;">
+          <h1 class="hero-headline" style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">Awareness Tips</h1>
+          <p style="color: #e2e8f0; line-height: 1.8; max-width: 600px; margin: 0 auto; font-size: 1.2rem;">Practical guides for responsible e-waste management.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Do's & Don'ts</h2></div>
+      <div class="grid-2" style="gap: 2rem;">
+        <div class="card do-card" style="text-align: left;">
+          <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;"><svg style="width: 28px; height: 28px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Recommended Actions</h3>
+          <div class="list-graphic"><div class="icon-circle icon-green">1</div><div><strong style="color: #fff;">Donate Working Devices</strong><p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Give old phones/laptops to charities.</p></div></div>
+          <div class="list-graphic"><div class="icon-circle icon-green">2</div><div><strong style="color: #fff;">Use Certified Recyclers</strong><p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Check CPCB list for authorized centers.</p></div></div>
+          <div class="list-graphic"><div class="icon-circle icon-green">3</div><div><strong style="color: #fff;">Wipe Your Data</strong><p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Factory reset devices before disposal.</p></div></div>
+        </div>
+        <div class="card dont-card" style="text-align: left;">
+          <h3 style="color: #ef4444; font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;"><svg style="width: 28px; height: 28px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Prohibited Actions</h3>
+          <div class="list-graphic"><div class="icon-circle icon-red">1</div><div><strong style="color: #fff;">No Regular Bins</strong><p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Never throw electronics in household trash.</p></div></div>
+          <div class="list-graphic"><div class="icon-circle icon-red">2</div><div><strong style="color: #fff;">Don't Burn Wires</strong><p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Burning releases deadly toxic fumes.</p></div></div>
+          <div class="list-graphic"><div class="icon-circle icon-red">3</div><div><strong style="color: #fff;">Avoid Scrap Dealers</strong><p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Unauthorized dealers lack safety standards.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Step-by-Step Guide</h2></div>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Follow the cycle of responsible e-waste disposal.</p>
+      <div class="cycle-container">
+        <div class="cycle-center"><div style="font-size: 3rem; margin-bottom: 0.5rem;">♻️</div><div style="font-size: 1rem; font-weight: 700;">MISSION</div><div style="font-size: 0.8rem;">SUCCESS</div></div>
+        <div class="cycle-path"></div>
+        <div class="cycle-step step-1"><span style="font-size: 2rem;">🔍</span><strong style="font-size: 0.9rem;">IDENTIFY</span><span class="step-content">Gather unused electronics.</span></div>
+        <div class="cycle-step step-2"><span style="font-size: 2rem;">💾</span><strong style="font-size: 0.9rem;">BACKUP</span><span class="step-content">Save personal data.</span></div>
+        <div class="cycle-step step-3"><span style="font-size: 2rem;">🧹</span><strong style="font-size: 0.9rem;">CLEAN</span><span class="step-content">Factory reset device.</span></div>
+        <div class="cycle-step step-4"><span style="font-size: 2rem;">📍</span><strong style="font-size: 0.9rem;">LOCATE</span><span class="step-content">Find authorized center.</span></div>
+        <div class="cycle-step step-5"><span style="font-size: 2rem;">🚚</span><strong style="font-size: 0.9rem;">DROP OFF</span><span class="step-content">Deposit items safely.</span></div>
+        <div class="cycle-step step-6"><span style="font-size: 2rem;">📢</span><strong style="font-size: 0.9rem;">SPREAD</span><span class="step-content">Motivate friends.</span></div>
+      </div>
+    </div>
+
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Safety Practices</h2></div>
+      <div class="card" style="text-align: left;">
+        <div class="grid-2" style="gap: 1.5rem;">
+          <div><h4 style="color: var(--accent); margin-bottom: 0.5rem;">For Handlers</h4><p style="color: var(--text-secondary); font-size: 0.9rem;">Wear insulated gloves and masks. Ensure ventilation.</p><h4 style="color: var(--accent); margin-bottom: 0.5rem; margin-top: 1rem;">Community Role</h4><p style="color: var(--text-secondary); font-size: 0.9rem;">Organize regular collection drives.</p></div>
+          <div><h4 style="color: var(--accent); margin-bottom: 0.5rem;">Battery Safety</h4><p style="color: var(--text-secondary); font-size: 0.9rem;">Do not crush Li-ion batteries. Store in non-flammable containers.</p><h4 style="color: var(--accent); margin-bottom: 0.5rem; margin-top: 1rem;">Data Security</h4><p style="color: var(--text-secondary); font-size: 0.9rem;">Physically destroy hard drives for security.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Real-Life Case Study</h2></div>
+      <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+        <div class="video-container"><video controls preload="metadata" style="background: var(--bg-solid);"><source src="media/v3.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+        <div style="padding: 2rem;"><h3 style="color: var(--accent); margin-bottom: 1rem;">The Transformation of Seelampur, Delhi</h3><p style="color: var(--text-secondary); line-height: 1.8;"><strong>Location:</strong> Seelampur, Delhi.<br><strong>The Problem:</strong> Informal processing, burning cables, severe health issues.<br><strong>The Intervention:</strong> E-Waste Rules 2016 & NGO training.<br><strong>The Impact:</strong> Transitioning to formalized, safer dismantling clusters.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW FOOTER -->
+  <footer class="footer-new">
+    <div class="footer-brand-section">
+      <div class="footer-leaf-graphic"><svg viewBox="0 0 24 24"><path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3C21,5,14,5.25,9,6.25C4,7.25,2,11.5,2,13.5C2,15.5,3.75,17.25,3.75,17.25C7,8,17,8,17,8Z"/></svg></div>
+      <h1 class="footer-brand-title">CleanTech</h1>
+      <p style="color: var(--text-secondary); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;">Reduce. Reuse. Recycle.</p>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="tips.html">Tips</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+      <div class="footer-col"><h3>Resources</h3><ul><li><a href="resources.html">Govt. Portals</a></li><li><a href="resources.html#map">Find Centers</a></li><li><a href="forum.html">Forum</a></li><li><a href="contact.html">References</a></li></ul></div>
+      <div class="footer-col"><h3>Contact Us</h3><div class="footer-contact-icons"><a href="contact.html" title="Location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a><a href="contact.html" title="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="contact.html" title="Phone"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a></div></div>
+    </div>
+    <div class="footer-bottom-bar"><p>© 2025 CleanTech Initiative | Project by Kaveri Yamewar.</p></div>
+  </footer>
+
+  <button class="chat-widget-btn" onclick="toggleChat()"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
+  <div id="globalChatWindow" class="chat-window">
+    <div class="chat-header"><h3>CleanTech Assistant</h3><button class="chat-close" onclick="toggleChat()">&times;</button></div>
+    <div class="chat-body" id="globalChatBody"><div class="chat-message bot-msg">Hello! Ask me about the E-Waste project.</div></div>
+    <div class="chat-footer">
+      <input type="text" id="globalChatInput" class="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendGlobalMessage()">
+      <button class="chat-send-btn" onclick="sendGlobalMessage()"><svg style="width:20px;height:20px" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg></button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources & Links</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+
+  <style>
+    /* Hero Headline Gradient */
+    .hero-headline {
+      background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    /* Graphical Headings Style (Sub Titles) */
+    .graphical-header {
+      display: inline-block;
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 10px 30px;
+      border-radius: 50px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+      transition: all 0.3s ease;
+    }
+    .graphical-header:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+      transform: translateY(-2px);
+    }
+    .graphical-header h2 {
+      margin: 0;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    /* Map Container */
+    #map-container {
+      position: relative;
+      height: 600px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      display: flex;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      background: white;
+    }
+
+    /* Sidebar List */
+    #map-sidebar {
+      width: 300px;
+      height: 100%;
+      background: #ffffff;
+      border-right: 1px solid #e5e7eb;
+      overflow-y: auto;
+      z-index: 900; 
+      color: #1f2937;
+    }
+    
+    [data-theme="dark"] #map-sidebar {
+       background: #1e293b;
+       border-right: 1px solid #334155;
+       color: #f1f5f9;
+    }
+
+    .center-item {
+      padding: 15px;
+      border-bottom: 1px solid #f3f4f6;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    [data-theme="dark"] .center-item { border-bottom: 1px solid #334155; }
+    .center-item:hover { background: #ecfdf5; }
+    [data-theme="dark"] .center-item:hover { background: #14532d; }
+    
+    .center-item.active { background: #dcfce7; border-left: 4px solid #22c55e; }
+    [data-theme="dark"] .center-item.active { background: #14532d; }
+
+    #map { flex: 1; height: 100%; z-index: 1; }
+
+    /* Custom Marker */
+    .marker-pin {
+      width: 30px; height: 30px;
+      border-radius: 50% 50% 50% 0;
+      background: #22c55e;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transform: rotate(-45deg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .marker-pin.user { background: #3b82f6; }
+    .marker-inner { transform: rotate(45deg); color: white; font-size: 14px; }
+
+    /* Cluster Styles */
+    .marker-cluster-small { background-color: rgba(181, 226, 140, 0.6); }
+    .marker-cluster-small div { background-color: rgba(110, 204, 57, 0.6); }
+    .marker-cluster { background-clip: padding-box; border-radius: 20px; font-weight: bold; color: white; }
+    .marker-cluster div { width: 30px; height: 30px; margin-left: 5px; margin-top: 5px; text-align: center; border-radius: 15px; font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif; }
+    .marker-cluster span { line-height: 30px; }
+
+    /* Icon Alignments */
+    .icon-left {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      #map-container { height: 500px; flex-direction: column; }
+      #map-sidebar { width: 100%; height: 200px; border-right: none; border-bottom: 1px solid #e5e7eb; }
+      #map { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <!-- NAVBAR -->
+  <nav class="nav-container">
+    <a href="index.html" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+      <span>Clean</span>Tech
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="tips.html" class="nav-link">Tips</a>
+      <a href="survey.html" class="nav-link">Survey</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="chatbot.html" class="nav-link">Chatbot</a>
+      <a href="forum.html" class="nav-link">Forum</a>
+      <a href="resources.html" class="nav-link active">Resources</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <button id="themeToggle" class="theme-btn" onclick="toggleTheme()"></button>
+  </nav>
+
+  <div class="container">
+    
+    <!-- HERO IMAGE SECTION -->
+    <div class="page-section">
+      <div style="position: relative; border-radius: 24px; overflow: hidden; min-height: 450px; display: flex; align-items: center; justify-content: center;">
+        
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80" alt="Library Resources" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); z-index: 1;"></div>
+
+        <div style="position: relative; z-index: 2; text-align: center; padding: 3rem;">
+          <h1 class="hero-headline" style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">
+            Resources & Links
+          </h1>
+          <p style="color: #e2e8f0; line-height: 1.8; max-width: 600px; margin: 0 auto; font-size: 1.2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+            Official portals, helplines, and nearby centers.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1. GOVERNMENT PORTALS -->
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header">
+        <h2>Government Portals</h2>
+      </div>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Direct links to Indian and Maharashtra state government resources.</p>
+
+      <div class="grid-2">
+        
+        <!-- Central Gov -->
+        <div class="card">
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.2rem; border-bottom: 1px solid var(--card-border); padding-bottom: 0.5rem;">
+            <svg class="icon-left" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1m4 0h1M9 12h1m4 0h1M9 16h1m4 0h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
+            Central Government
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+            
+            <!-- Icon: Recycle -->
+            <a href="https://cpcb.nic.in/e-waste/" target="_blank" class="btn btn-secondary" style="text-align: left; padding: 0.8rem; font-size: 0.9rem; display: flex; align-items: center;">
+              <svg class="icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5m0 0L11 3m-3.804 6.5h6.604m0 0L17 3m-3 6.5l3.804 6.5m0 0h3.204a1.83 1.83 0 0 0 1.566-.881 1.784 1.784 0 0 0 0-1.784L17 3m.604 9.5L14 15.5m-3 0l3 6m0 0h3m-6 0H9"/></svg>
+              CPCB E-Waste Division
+            </a>
+
+            <!-- Icon: Building -->
+            <a href="https://moef.gov.in/" target="_blank" class="btn btn-secondary" style="text-align: left; padding: 0.8rem; font-size: 0.9rem; display: flex; align-items: center;">
+              <svg class="icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              Ministry of Environment (MoEFCC)
+            </a>
+
+            <!-- Icon: Link -->
+            <a href="https://www.india.gov.in/" target="_blank" class="btn btn-secondary" style="text-align: left; padding: 0.8rem; font-size: 0.9rem; display: flex; align-items: center;">
+              <svg class="icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              National Portal of India
+            </a>
+          </div>
+        </div>
+
+        <!-- State Gov -->
+        <div class="card">
+          <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.2rem; border-bottom: 1px solid var(--card-border); padding-bottom: 0.5rem;">
+            <svg class="icon-left" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Maharashtra State
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+            
+            <!-- Icon: Leaf -->
+            <a href="https://mpcb.gov.in/" target="_blank" class="btn btn-secondary" style="text-align: left; padding: 0.8rem; font-size: 0.9rem; display: flex; align-items: center;">
+              <svg class="icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 014 13c0-4 3-8 8-10 5 2 8 6 8 10a7 7 0 01-7 7zm0 0v-8"/></svg>
+              MPCB (Pollution Control Board)
+            </a>
+
+            <!-- Icon: Tree -->
+            <a href="https://environment.maharashtra.gov.in/" target="_blank" class="btn btn-secondary" style="text-align: left; padding: 0.8rem; font-size: 0.9rem; display: flex; align-items: center;">
+              <svg class="icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-7m0 0l4-4m-4 4l-4-4m4-12v5m0 0l4 2m-4-2l-4 2"/></svg>
+              Dept. of Environment
+            </a>
+
+            <!-- Icon: Sparkle -->
+            <a href="https://swachh.maharashtra.gov.in/" target="_blank" class="btn btn-secondary" style="text-align: left; padding: 0.8rem; font-size: 0.9rem; display: flex; align-items: center;">
+              <svg class="icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+              Swachh Maharashtra
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2. INTERNATIONAL & LEARNING -->
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header">
+        <h2>Global & Learning Resources</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-bottom: 0.5rem;">Global E-Waste Monitor</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">United Nations report on global e-waste statistics.</p>
+          <a href="https://globalewaste.org/" target="_blank" style="color: var(--accent); font-size: 0.9rem;">Visit Website →</a>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom: 0.5rem;">Toxics Link</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Indian environmental research organization.</p>
+          <a href="https://toxicslink.org/" target="_blank" style="color: var(--accent); font-size: 0.9rem;">Visit Toxics Link →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. MAP SECTION -->
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header">
+        <h2>Nearby E-Waste Centers</h2>
+      </div>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">Authorized centers in Maharashtra. Click list to locate.</p>
+
+      <div id="map-container">
+        <div id="map-sidebar">
+          <div style="padding: 15px; background: inherit; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #e5e7eb;">
+            <div style="position: relative;">
+              <!-- Search Icon -->
+              <svg style="position: absolute; left: 10px; top: 10px; color: #9ca3af; width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="text" id="searchInput" placeholder="Search center..." style="width: 100%; padding: 10px 10px 10px 40px; border-radius: 6px; border: 1px solid #d1d5db; background: #f9fafb; color: #111827;">
+            </div>
+          </div>
+          <div id="centersList">
+            <!-- List generated by JS -->
+          </div>
+        </div>
+        <div id="map"></div>
+      </div>
+      
+      <button onclick="locateUser()" class="btn btn-primary" style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <!-- Location Icon -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find My Location
+      </button>
+    </div>
+
+  </div>
+
+  <!-- NEW FOOTER -->
+  <footer class="footer-new">
+    <div class="footer-brand-section">
+      <div class="footer-leaf-graphic"><svg viewBox="0 0 24 24"><path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3C21,5,14,5.25,9,6.25C4,7.25,2,11.5,2,13.5C2,15.5,3.75,17.25,3.75,17.25C7,8,17,8,17,8Z"/></svg></div>
+      <h1 class="footer-brand-title">CleanTech</h1>
+      <p style="color: var(--text-secondary); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;">Reduce. Reuse. Recycle.</p>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="tips.html">Tips</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+      <div class="footer-col"><h3>Resources</h3><ul><li><a href="resources.html">Govt. Portals</a></li><li><a href="resources.html#map">Find Centers</a></li><li><a href="forum.html">Forum</a></li><li><a href="contact.html">References</a></li></ul></div>
+      <div class="footer-col"><h3>Contact Us</h3><div class="footer-contact-icons"><a href="contact.html" title="Location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a><a href="contact.html" title="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="contact.html" title="Phone"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a></div></div>
+    </div>
+    <div class="footer-bottom-bar"><p>© 2025 CleanTech Initiative | Project by Kaveri Yamewar.</p></div>
+  </footer>
+
+  <!-- CHATBOT WIDGET -->
+  <button class="chat-widget-btn" onclick="toggleChat()"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
+  <div id="globalChatWindow" class="chat-window">
+    <div class="chat-header"><h3>CleanTech Assistant</h3><button class="chat-close" onclick="toggleChat()">&times;</button></div>
+    <div class="chat-body" id="globalChatBody"><div class="chat-message bot-msg">Hello! Ask me about the E-Waste project.</div></div>
+    <div class="chat-footer">
+      <input type="text" id="globalChatInput" class="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendGlobalMessage()">
+      <button class="chat-send-btn" onclick="sendGlobalMessage()"><svg style="width:20px;height:20px" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg></button>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      var map = L.map('map').setView([19.7515, 73.8250], 7);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+
+      const centers = [
+        { name: "Eco Recycling Ltd", city: "Mumbai", lat: 19.1136, lng: 72.8697, address: "Marol, Andheri East" },
+        { name: "SIMS Recycling", city: "Mumbai", lat: 19.0891, lng: 72.8654, address: "Vikhroli" },
+        { name: "Karo Sambhav", city: "Mumbai", lat: 19.0144, lng: 72.8361, address: "Lower Parel" },
+        { name: "Maharashtra E-Waste", city: "Pune", lat: 18.5204, lng: 73.8567, address: "Bhosari, PCMC" },
+        { name: "Sanjay E-Waste", city: "Pune", lat: 18.5680, lng: 73.9021, address: "Ranjangaon" },
+        { name: "Vatsla E-Waste", city: "Nagpur", lat: 21.1458, lng: 79.0882, address: "Hingna" },
+        { name: "Green Revolution", city: "Nashik", lat: 19.9975, lng: 73.7898, address: "Satpur MIDC" },
+        { name: "Cerebra Integrated", city: "Mumbai", lat: 19.2183, lng: 72.9781, address: "Thane" },
+        { name: "Brick Work Recycling", city: "Mumbai", lat: 19.0549, lng: 72.8351, address: "BKC" },
+        { name: "Green Tech Solutions", city: "Kolhapur", lat: 16.7050, lng: 74.2433, address: "Gokul Shirgaon" },
+        { name: "Clean India Recyclers", city: "Aurangabad", lat: 19.8762, lng: 75.3433, address: "Waluj MIDC" }
+      ];
+
+      var markers = L.markerClusterGroup();
+      var listContainer = document.getElementById('centersList');
+      var searchInput = document.getElementById('searchInput');
+
+      centers.forEach((center, index) => {
+        // Updated Icon: Recycle SVG
+        var icon = L.divIcon({
+          className: 'custom-div-icon',
+          html: `<div style="background:#22c55e; color:white; width:30px; height:30px; border-radius:50%; border:2px solid white; box-shadow:0 0 5px rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5m0 0L11 3m-3.804 6.5h6.604m0 0L17 3m-3 6.5l3.804 6.5m0 0h3.204a1.83 1.83 0 0 0 1.566-.881 1.784 1.784 0 0 0 0-1.784L17 3"/></svg>
+                 </div>`,
+          iconSize: [30, 30],
+          iconAnchor: [15, 15]
+        });
+
+        var marker = L.marker([center.lat, center.lng], { icon: icon });
+        marker.bindPopup(`<div style="font-weight: bold; color: #052e16;">${center.name}</div><br><span style="font-size: 0.9rem; color: #555;">${center.address}, ${center.city}</span>`);
+        markers.addLayer(marker);
+
+        var listItem = document.createElement('div');
+        listItem.className = 'center-item';
+        listItem.innerHTML = `
+          <div style="font-weight: 600; font-size: 0.95rem;">${center.name}</div>
+          <div style="font-size: 0.8rem; margin-top: 4px; color: #6b7280;">${center.city} - ${center.address}</div>
+        `;
+        
+        listItem.onclick = function() {
+          map.setView([center.lat, center.lng], 15);
+          marker.openPopup();
+          document.querySelectorAll('.center-item').forEach(el => el.classList.remove('active'));
+          this.classList.add('active');
+        };
+        
+        listContainer.appendChild(listItem);
+      });
+
+      map.addLayer(markers);
+
+      searchInput.addEventListener('keyup', function() {
+        var filter = this.value.toLowerCase();
+        var items = document.getElementsByClassName('center-item');
+        for (var i = 0; i < items.length; i++) {
+          var txt = items[i].textContent.toLowerCase();
+          items[i].style.display = txt.includes(filter) ? 'block' : 'none';
+        }
+      });
+
+      window.locateUser = function() {
+        map.locate({setView: true, maxZoom: 16});
+        map.on('locationfound', function(e) {
+          // User Icon: Location Pin SVG
+          var userIcon = L.divIcon({
+            html: `<div style="background:#3b82f6; color:white; width:24px; height:24px; border-radius:50%; border:2px solid white; box-shadow:0 0 5px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
+                   </div>`,
+            className: 'user-icon',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12]
+          });
+          L.marker(e.latlng, {icon: userIcon}).addTo(map).bindPopup("📍 You are here").openPopup();
+          L.circle(e.latlng, {radius: e.accuracy, color: '#3b82f6', fillOpacity: 0.1}).addTo(map);
+        });
+        map.on('locationerror', function(e) { alert("Location access denied."); });
+      };
+
+    });
+  </script>
+</body>
+</html>

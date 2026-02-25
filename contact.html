@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & References</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Profile Card Specific Styles */
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .profile-img-wrapper {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .profile-img-wrapper:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .qr-container {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Sources List Style */
+    .source-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .source-item h4 { color: var(--text-primary); font-size: 1rem; margin-bottom: 0.3rem; }
+    .source-item p { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem; }
+    .source-item a { color: var(--accent); font-size: 0.85rem; text-decoration: none; word-break: break-all; }
+    .source-item a:hover { text-decoration: underline; }
+
+    /* FIX: Strong Gradient Class */
+    .text-gradient-shine {
+      background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+      display: inline-block;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+  </style>
+</head>
+<body>
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <a href="index.html" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+      <span>Clean</span>Tech
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="research.html" class="nav-link">Research</a></li>
+      <li><a href="tips.html" class="nav-link">Tips</a></li>
+      <li><a href="survey.html" class="nav-link">Survey</a></li>
+      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+      <li><a href="forum.html" class="nav-link">Forum</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact</a></li>
+    </ul>
+    <button id="themeToggle" class="theme-btn" onclick="toggleTheme()"></button>
+  </nav>
+
+  <div class="container">
+    <div class="section-header">
+      <!-- Added Class 'text-gradient-shine' -->
+      <h1 class="section-title text-gradient-shine">Contact & References</h1>
+      <p class="section-sub">Project details, author profile, and data sources</p>
+    </div>
+
+    <!-- 1. PROFILE & QR CODE SECTION -->
+    <div class="page-section">
+      <div class="grid-2" style="align-items: center;">
+        
+        <!-- Profile Info -->
+        <div class="card profile-card" style="height: 100%;">
+          <div class="profile-img-wrapper">
+            <!-- Replace src with your actual image path -->
+            <img src="media/profile.jpeg" alt="Kaveri Yamewar">
+          </div>
+          <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Yamewar Kaveri Raghunath</h2>
+          <p style="color: var(--accent); margin-bottom: 0.5rem; font-weight: 600;">Project Author</p>
+          
+          <div style="width: 100%; text-align: center; margin-top: 1.5rem;">
+             <p style="color: var(--text-secondary); font-size: 0.9rem;">
+               Dedicated to promoting sustainable e-waste management practices.
+             </p>
+          </div>
+        </div>
+
+        <!-- QR Code -->
+        <div class="card text-center" style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h3 style="margin-bottom: 1rem;">Scan to Connect</h3>
+          
+          <div class="qr-container">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://scan.page/p/k9oaIQ" alt="Contact QR Code" style="display: block;">
+          </div>
+
+          <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-secondary);">
+            Scan this QR code to view my complete contact details and profile.
+          </p>
+          
+          <a href="https://scan.page/p/k9oaIQ" target="_blank" class="btn btn-secondary" style="margin-top: 1.5rem; font-size: 0.8rem; padding: 10px 20px;">
+            View Contact Profile
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2. REFERENCES / REAL SOURCES -->
+    <div class="page-section">
+      <h2 class="section-title" style="font-size: 1.8rem;">References & Sources</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">All data and information are verified from official government and international reports.</p>
+
+      <div class="card">
+        
+        <!-- Source 1 -->
+        <div class="source-item">
+          <h4>1. Central Pollution Control Board (CPCB)</h4>
+          <p>Official guidelines and implementation status of E-Waste Management Rules, 2016 in India.</p>
+          <a href="https://cpcb.nic.in/e-waste/" target="_blank">https://cpcb.nic.in/e-waste/</a>
+        </div>
+
+        <!-- Source 2 -->
+        <div class="source-item">
+          <h4>2. Global E-Waste Monitor 2020</h4>
+          <p>United Nations University (UNU) report providing global statistics on e-waste generation and recycling rates.</p>
+          <a href="https://globalewaste.org/" target="_blank">https://globalewaste.org/</a>
+        </div>
+
+        <!-- Source 3 -->
+        <div class="source-item">
+          <h4>3. Ministry of Environment, Forest and Climate Change (MoEFCC)</h4>
+          <p>E-Waste (Management) Rules, 2016 Official Notification PDF.</p>
+          <a href="http://moef.gov.in/content/e-waste" target="_blank">http://moef.gov.in/content/e-waste</a>
+        </div>
+
+        <!-- Source 4 -->
+        <div class="source-item">
+          <h4>4. Toxics Link</h4>
+          <p>Indian environmental research organization providing ground-level reports on e-waste handling.</p>
+          <a href="https://toxicslink.org/" target="_blank">https://toxicslink.org/</a>
+        </div>
+
+        <!-- Source 5 -->
+        <div class="source-item">
+          <h4>5. Maharashtra Pollution Control Board (MPCB)</h4>
+          <p>State-specific guidelines for authorized recyclers and collection centers.</p>
+          <a href="https://mpcb.gov.in/" target="_blank">https://mpcb.gov.in/</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NEW FOOTER (ADDED) -->
+  <footer class="footer-new">
+    <div class="footer-brand-section">
+      <div class="footer-leaf-graphic"><svg viewBox="0 0 24 24"><path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3C21,5,14,5.25,9,6.25C4,7.25,2,11.5,2,13.5C2,15.5,3.75,17.25,3.75,17.25C7,8,17,8,17,8Z"/></svg></div>
+      <h1 class="footer-brand-title">CleanTech</h1>
+      <p style="color: var(--text-secondary); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;">Reduce. Reuse. Recycle.</p>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="tips.html">Tips</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+      <div class="footer-col"><h3>Resources</h3><ul><li><a href="resources.html">Govt. Portals</a></li><li><a href="resources.html#map">Find Centers</a></li><li><a href="forum.html">Forum</a></li><li><a href="contact.html">References</a></li></ul></div>
+      <div class="footer-col"><h3>Contact Us</h3><div class="footer-contact-icons"><a href="contact.html" title="Location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a><a href="contact.html" title="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="contact.html" title="Phone"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a></div></div>
+    </div>
+    <div class="footer-bottom-bar"><p>© 2025 CleanTech Initiative | Project by Kaveri Yamewar.</p></div>
+  </footer>
+
+  <!-- Chatbot Widget -->
+  <button class="chat-widget-btn" onclick="toggleChat()"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
+  <div id="globalChatWindow" class="chat-window">
+    <div class="chat-header"><h3>CleanTech Assistant</h3><button class="chat-close" onclick="toggleChat()">&times;</button></div>
+    <div class="chat-body" id="globalChatBody"><div class="chat-message bot-msg">Hello! Ask me about the E-Waste project.</div></div>
+    <div class="chat-footer">
+      <input type="text" id="globalChatInput" class="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendGlobalMessage()">
+      <button class="chat-send-btn" onclick="sendGlobalMessage()"><svg style="width:20px;height:20px" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg></button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

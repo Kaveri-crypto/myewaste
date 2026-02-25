@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Findings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Hero & Headings CSS */
+    .hero-headline { background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s linear infinite; }
+    @keyframes shine { to { background-position: 200% center; } }
+    .graphical-header { display: inline-block; background: rgba(0, 255, 204, 0.05); border: 1px solid var(--card-border); padding: 10px 30px; border-radius: 50px; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(0, 255, 204, 0.1); transition: all 0.3s ease; }
+    .graphical-header:hover { border-color: var(--accent); box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); transform: translateY(-2px); }
+    .graphical-header h2 { margin: 0; border: none; font-size: 1.5rem; color: var(--accent); }
+
+    /* Icon Box Style (Theme Colored) */
+    .icon-box {
+      width: 60px; height: 60px; margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0, 255, 204, 0.1); border-radius: 50%;
+      border: 1px solid rgba(0, 255, 204, 0.2);
+    }
+    .icon-box svg {
+      width: 32px; height: 32px;
+      stroke: var(--accent); stroke-width: 2; fill: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <nav class="nav-container">
+    <a href="index.html" class="logo"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg><span>Clean</span>Tech</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="research.html" class="nav-link active">Research</a>
+      <a href="tips.html" class="nav-link">Tips</a>
+      <a href="survey.html" class="nav-link">Survey</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="chatbot.html" class="nav-link">Chatbot</a>
+      <a href="forum.html" class="nav-link">Forum</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <button id="themeToggle" class="theme-btn" onclick="toggleTheme()"></button>
+  </nav>
+
+  <div class="container">
+    <div class="page-section">
+      <div style="position: relative; border-radius: 24px; overflow: hidden; min-height: 450px; display: flex; align-items: center; justify-content: center;">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Data Analysis" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); z-index: 1;"></div>
+        <div style="position: relative; z-index: 2; text-align: center; padding: 3rem;">
+          <h1 class="hero-headline" style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">Research Findings</h1>
+          <p style="color: #e2e8f0; line-height: 1.8; max-width: 600px; margin: 0 auto; font-size: 1.2rem;">Complete Analysis of Survey Data </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Executive Summary</h2></div>
+      <div class="card" style="border-left: 5px solid var(--accent); text-align: left;">
+        <ul style="color: var(--text-secondary); line-height: 2; list-style-type: disc; padding-left: 1.5rem;">
+          <li>A survey was conducted among <strong>respondents</strong>.</li>
+          <li>Study reveals a critical <strong>"Awareness-Action Gap"</strong>.</li>
+          <li><strong>82% aware</strong>, but only <strong>33% know centers</strong>.</li>
+          <li><strong>39% rely on informal dealers</strong>.</li>
+          <li>Main barrier: <strong>Lack of Information</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Complete Survey Data Analysis</h2></div>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Comprehensive overview of key metrics.</p>
+      <div class="card" style="padding: 2rem;">
+        <div style="height: 600px; width: 100%;"><canvas id="masterChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Key Insights with SVG Icons -->
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Key Insights</h2></div>
+      <div class="grid-3">
+        
+        <!-- Card 1: The Gap -->
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">The Gap</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;"><strong>82% Aware</strong> vs <strong>33% Know Centers</strong>.</p>
+        </div>
+
+        <!-- Card 2: Primary Method -->
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Primary Method</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;"><strong>Scrap Dealers (39%)</strong> top method.</p>
+        </div>
+
+        <!-- Card 3: Main Barrier -->
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Main Barrier</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;"><strong>68% don't know where/how</strong>.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header"><h2>Full Research Paper</h2></div>
+      <div class="card" style="padding: 0; overflow: hidden; height: 800px;"><iframe src="INDEX.pdf" style="width: 100%; height: 100%; border: none;"></iframe></div>
+    </div>
+  </div>
+
+  <!-- NEW FOOTER -->
+  <footer class="footer-new">
+    <div class="footer-brand-section">
+      <div class="footer-leaf-graphic"><svg viewBox="0 0 24 24"><path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3C21,5,14,5.25,9,6.25C4,7.25,2,11.5,2,13.5C2,15.5,3.75,17.25,3.75,17.25C7,8,17,8,17,8Z"/></svg></div>
+      <h1 class="footer-brand-title">CleanTech</h1>
+      <p style="color: var(--text-secondary); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;">Reduce. Reuse. Recycle.</p>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="tips.html">Tips</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+      <div class="footer-col"><h3>Resources</h3><ul><li><a href="resources.html">Govt. Portals</a></li><li><a href="resources.html#map">Find Centers</a></li><li><a href="forum.html">Forum</a></li><li><a href="contact.html">References</a></li></ul></div>
+      <div class="footer-col"><h3>Contact Us</h3><div class="footer-contact-icons"><a href="contact.html" title="Location"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a><a href="contact.html" title="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="contact.html" title="Phone"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a></div></div>
+    </div>
+    <div class="footer-bottom-bar"><p>© 2025 CleanTech Initiative | Project by Kaveri Yamewar.</p></div>
+  </footer>
+
+  <button class="chat-widget-btn" onclick="toggleChat()"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
+  <div id="globalChatWindow" class="chat-window">
+    <div class="chat-header"><h3>CleanTech Assistant</h3><button class="chat-close" onclick="toggleChat()">&times;</button></div>
+    <div class="chat-body" id="globalChatBody"><div class="chat-message bot-msg">Hello! Ask me about the E-Waste project.</div></div>
+    <div class="chat-footer">
+      <input type="text" id="globalChatInput" class="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendGlobalMessage()">
+      <button class="chat-send-btn" onclick="sendGlobalMessage()"><svg style="width:20px;height:20px" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg></button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const htmlTag = document.documentElement; const isLight = htmlTag.classList.contains('light') || htmlTag.getAttribute('data-theme') === 'light';
+      let chartTextColor, gridColor;
+      if (isLight) { chartTextColor = '#14532d'; gridColor = 'rgba(0, 0, 0, 0.15)'; } else { chartTextColor = '#FFFFFF'; gridColor = 'rgba(255, 255, 255, 0.15)'; }
+      const ctx = document.getElementById('masterChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar', data: { labels: ['Aware', 'Know Centers', 'Separate Batteries', 'Disposal: Scrap Dealer', 'Disposal: Store at Home', 'Disposal: Trash', "Barrier: Don't Know", 'Barrier: Inconvenient', 'Encourage: Easy Access', 'Encourage: Incentives'], datasets: [{ label: 'Yes / Positive (%)', data: [82, 33, 29, 0, 0, 0, 0, 0, 78, 55], backgroundColor: 'rgba(34, 197, 94, 0.7)', borderColor: 'rgba(34, 197, 94, 1)', borderWidth: 1 }, { label: 'No / Negative (%)', data: [18, 35, 27, 0, 0, 0, 0, 0, 0, 0], backgroundColor: 'rgba(239, 68, 68, 0.6)', borderColor: 'rgba(239, 68, 68, 1)', borderWidth: 1 }, { label: 'Behavior (%)', data: [0, 0, 0, 39, 25, 16, 68, 25, 0, 0], backgroundColor: 'rgba(245, 158, 11, 0.7)', borderColor: 'rgba(245, 158, 11, 1)', borderWidth: 1 }] },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { color: chartTextColor } }, title: { display: true, text: 'E-Waste Survey Analysis', color: chartTextColor } }, scales: { x: { title: { display: true, text: 'Percentage (%)', color: chartTextColor }, grid: { color: gridColor }, ticks: { color: chartTextColor } }, y: { grid: { display: false }, ticks: { color: chartTextColor } } } }
+      });
+    });
+  </script>
+</body>
+</html>

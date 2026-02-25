@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanTech - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Hero Headline Gradient */
+    .hero-headline {
+      background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    /* Graphical Headings Style */
+    .graphical-header {
+      display: inline-block;
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 10px 30px;
+      border-radius: 50px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+      transition: all 0.3s ease;
+    }
+    .graphical-header:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+      transform: translateY(-2px);
+    }
+    .graphical-header h2 {
+      margin: 0;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    /* Icon Style */
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 255, 204, 0.1);
+      border-radius: 50%;
+      border: 1px solid rgba(0, 255, 204, 0.2);
+    }
+    .icon-box svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--accent);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Footer Styles */
+    .footer-new {
+      background: var(--bg-solid);
+      border-top: 1px solid var(--card-border);
+      padding: 5rem 5% 2rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    /* Aesthetic Brand Section */
+    .footer-brand-section {
+      margin-bottom: 4rem;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    /* Leaf Graphic Styling */
+    .footer-leaf-graphic {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem;
+      opacity: 0.8;
+      animation: float-leaf 4s ease-in-out infinite;
+    }
+    .footer-leaf-graphic svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--accent);
+      filter: drop-shadow(0 0 15px var(--accent-glow));
+    }
+    @keyframes float-leaf {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    /* Aesthetic Title */
+    .footer-brand-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+      text-align: left;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-col h3 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .footer-col p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 0.8rem; }
+    .footer-col ul li a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+    .footer-col ul li a:hover {
+      color: var(--accent);
+      padding-left: 5px;
+    }
+    
+    .footer-contact-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .footer-contact-icons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+    .footer-contact-icons a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .footer-contact-icons a svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-secondary);
+      fill: none;
+      transition: 0.3s;
+    }
+    .footer-contact-icons a:hover svg {
+      stroke: #000;
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid var(--card-border);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-brand-title { font-size: 2.5rem; }
+      .footer-leaf-graphic { width: 60px; height: 60px; }
+      .footer-grid { text-align: center; }
+      .footer-contact-icons { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <a href="index.html" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+      <span>Clean</span>Tech
+    </a>
+    
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="tips.html" class="nav-link">Tips</a>
+      <a href="survey.html" class="nav-link">Survey</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="chatbot.html" class="nav-link">Chatbot</a>
+      <a href="forum.html" class="nav-link">Forum</a>
+      <a href="resources.html" class="nav-link">Resources</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+
+    <button id="themeToggle" class="theme-btn" onclick="toggleTheme()"></button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="media/hero1.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="inline-block px-4 py-1 rounded-full border border-[var(--accent)] text-[var(--accent)] text-sm mb-6" style="backdrop-filter: blur(5px); background: rgba(0,0,0,0.3);">
+        Environmental Awareness Initiative
+      </div>
+      <h1 class="hero-headline">Responsible <span>E-Waste</span><br>Awareness Program</h1>
+      <p>Bridging the gap between technology and sustainability. Learn how to manage electronic waste effectively.</p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="#intro" class="btn btn-primary">Read Introduction</a>
+        <a href="research.html" class="btn btn-secondary">View Findings</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    
+    <!-- Introduction -->
+    <div id="intro" class="page-section" style="text-align: center;">
+      <div class="graphical-header">
+        <h2>Introduction & Purpose</h2>
+      </div>
+      <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px; margin: 0 auto;">
+        In the modern era, technology has become an essential part of everyday life. Devices such as mobile phones, computers, and household appliances have improved communication, education, and comfort.
+        <br><br>
+        However, the increasing use of these devices has also created a major concern in the form of <strong>electronic waste (e-waste)</strong>. E-waste refers to discarded electronic products that are no longer useful. Unlike ordinary waste, it contains harmful substances such as lead, mercury, and cadmium.
+        <br><br>
+        The purpose of this program is to bridge the knowledge gap regarding responsible e-waste management.
+      </p>
+    </div>
+
+    <!-- Objectives -->
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header">
+        <h2>Program Objectives</h2>
+      </div>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Key goals identified in the Field Project</p>
+
+      <div class="grid-3 grid-even">
+        
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Education First</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Educational institutions play a key role in spreading awareness about the hazards of e-waste.</p>
+        </div>
+
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/><path d="m14 16-3 3 3 3"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Recycling Habits</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Promoting proper disposal and recycling habits among households and communities.</p>
+        </div>
+
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Sustainability</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Guiding better policies for a cleaner tomorrow and sustainable digital practices.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scope (Layout Modified) -->
+    <div class="page-section" style="text-align: center;">
+      <div class="graphical-header">
+        <h2>Scope of Awareness</h2>
+      </div>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Comprehensive approach to address e-waste challenges.</p>
+
+      <!-- Top 3 Cards Grid -->
+      <div class="grid-3" style="margin-bottom: 0;">
+        
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Target Audience</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Primary focus on students and educators. Secondary reach includes households and local shop owners.</p>
+        </div>
+
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Key Areas</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Environmental Impact, Health Hazards, Data Security, and Legal Regulations.</p>
+        </div>
+
+        <div class="card text-center">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Methodology</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Structured surveys, observational studies, and government policy reviews.</p>
+        </div>
+
+      </div>
+
+      <!-- Bottom Centered Card (Stakeholders) -->
+      <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <div class="card text-center" style="max-width: 350px; width: 100%;">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Stakeholders</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Local schools, NGOs, and municipal corporations for ground-level implementation.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- NEW FOOTER -->
+  <footer class="footer-new">
+    
+    <!-- Top Brand Section -->
+    <div class="footer-brand-section">
+      <div class="footer-leaf-graphic">
+        <svg viewBox="0 0 24 24">
+          <path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3C21,5,14,5.25,9,6.25C4,7.25,2,11.5,2,13.5C2,15.5,3.75,17.25,3.75,17.25C7,8,17,8,17,8Z"/>
+        </svg>
+      </div>
+      <h1 class="footer-brand-title">CleanTech</h1>
+      <p style="color: var(--text-secondary); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;">Reduce. Reuse. Recycle.</p>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="tips.html">Awareness Tips</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="resources.html">Govt. Portals</a></li>
+          <li><a href="resources.html#map">Find Centers</a></li>
+          <li><a href="forum.html">Community Forum</a></li>
+          <li><a href="contact.html">References</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <div class="footer-contact-icons">
+          <a href="contact.html" title="Location">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </a>
+          <a href="contact.html" title="Email">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="contact.html" title="Phone">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p>© 2025 CleanTech Initiative | Project by Kaveri Yamewar. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Chatbot Widget -->
+  <button class="chat-widget-btn" onclick="toggleChat()"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
+  <div id="globalChatWindow" class="chat-window">
+    <div class="chat-header"><h3>CleanTech Assistant</h3><button class="chat-close" onclick="toggleChat()">&times;</button></div>
+    <div class="chat-body" id="globalChatBody"><div class="chat-message bot-msg">Hello! Ask me about the E-Waste project.</div></div>
+    <div class="chat-footer">
+      <input type="text" id="globalChatInput" class="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendGlobalMessage()">
+      <button class="chat-send-btn" onclick="sendGlobalMessage()"><svg style="width:20px;height:20px" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/></svg></button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
