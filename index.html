@@ -61,28 +61,28 @@
       fill: none;
     }
 
-    /* Footer Styles */
+    /* --- UPDATED FOOTER STYLES (COMPACT HEIGHT + BIG LOGO) --- */
     .footer-new {
       background: var(--bg-solid);
       border-top: 1px solid var(--card-border);
-      padding: 5rem 5% 2rem;
+      padding: 2rem 5% 1rem; /* Compact Padding */
       margin-top: 4rem;
       text-align: center;
     }
 
     /* Aesthetic Brand Section */
     .footer-brand-section {
-      margin-bottom: 4rem;
+      margin-bottom: 1rem; /* Reduced Margin */
       position: relative;
       display: inline-block;
       width: 100%;
     }
     
-    /* Leaf Graphic Styling */
+    /* Leaf Graphic: Big Size (Starting wali size) */
     .footer-leaf-graphic {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1rem;
+      width: 60px; 
+      height: 60px;
+      margin: 0 auto 0.5rem;
       opacity: 0.8;
       animation: float-leaf 4s ease-in-out infinite;
     }
@@ -94,14 +94,14 @@
     }
     @keyframes float-leaf {
       0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(5deg); }
+      50% { transform: translateY(-5px) rotate(5deg); }
     }
 
-    /* Aesthetic Title */
+    /* Title: Big Size (Starting wali size) */
     .footer-brand-title {
-      font-size: 4rem;
+      font-size: 3rem; 
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0;
       line-height: 1;
       background: linear-gradient(90deg, var(--accent), #ffffff, var(--accent));
       background-size: 200% auto;
@@ -112,9 +112,9 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 3rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.5rem 2rem; /* Minimal Row Gap */
+      margin-bottom: 0.5rem;
       text-align: left;
       max-width: 1000px;
       margin-left: auto;
@@ -122,23 +122,24 @@
     }
     .footer-col h3 {
       color: var(--accent);
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
+      font-size: 0.8rem; /* Small Headers */
+      margin-bottom: 0.25rem;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     .footer-col p {
       color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.8;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      margin: 0;
     }
-    .footer-col ul { list-style: none; padding: 0; }
-    .footer-col ul li { margin-bottom: 0.8rem; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col ul li { margin-bottom: 0.1rem; }
     .footer-col ul li a {
       color: var(--text-secondary);
       text-decoration: none;
       transition: 0.3s;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     .footer-col ul li a:hover {
       color: var(--accent);
@@ -147,12 +148,11 @@
     
     .footer-contact-icons {
       display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
     }
     .footer-contact-icons a {
-      width: 40px;
-      height: 40px;
+      width: 28px; height: 28px;
       border-radius: 50%;
       border: 1px solid var(--card-border);
       display: flex;
@@ -165,8 +165,8 @@
       border-color: var(--accent);
     }
     .footer-contact-icons a svg {
-      width: 20px;
-      height: 20px;
+      width: 14px;
+      height: 14px;
       stroke: var(--text-secondary);
       fill: none;
       transition: 0.3s;
@@ -177,17 +177,17 @@
 
     .footer-bottom-bar {
       border-top: 1px solid var(--card-border);
-      padding-top: 2rem;
+      padding-top: 0.5rem;
       text-align: center;
       color: var(--text-secondary);
-      font-size: 0.85rem;
-      margin-top: 2rem;
+      font-size: 0.7rem;
+      margin-top: 0;
     }
 
     @media (max-width: 768px) {
-      .footer-brand-title { font-size: 2.5rem; }
-      .footer-leaf-graphic { width: 60px; height: 60px; }
-      .footer-grid { text-align: center; }
+      .footer-brand-title { font-size: 2.2rem; }
+      .footer-leaf-graphic { width: 50px; height: 50px; }
+      .footer-grid { text-align: center; gap: 1rem; margin-top: 0.5rem; }
       .footer-contact-icons { justify-content: center; }
     }
   </style>
@@ -359,7 +359,6 @@
   <!-- NEW FOOTER -->
   <footer class="footer-new">
     
-    <!-- Top Brand Section -->
     <div class="footer-brand-section">
       <div class="footer-leaf-graphic">
         <svg viewBox="0 0 24 24">
