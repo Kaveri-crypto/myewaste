@@ -176,6 +176,15 @@
             </div>
           </div>
 
+          <!-- NEW POSTER ADDED HERE -->
+          <div class="slide">
+            <img src="media/poster_4.png" alt="Recycle Poster">
+            <div class="slide-overlay">
+              <h3 style="color: #3b82f6; font-size: 1.5rem;">Recycle Today</h3>
+              <p>For a Better Tomorrow</p>
+            </div>
+          </div>
+
         </div>
         <button class="slider-btn prev" onclick="changeSlide('poster', -1)"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
         <button class="slider-btn next" onclick="changeSlide('poster', 1)"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
@@ -253,7 +262,7 @@
   <script>
     const sliders = {
       info: { container: document.getElementById('infoSliderContainer'), track: document.getElementById('infoSliderTrack'), dotsContainer: document.getElementById('infoDots'), currentSlide: 0, totalSlides: 5, autoPlayInterval: null },
-      poster: { container: document.getElementById('posterSliderContainer'), track: document.getElementById('posterSliderTrack'), dotsContainer: document.getElementById('posterDots'), currentSlide: 0, totalSlides: 3, autoPlayInterval: null }
+      poster: { container: document.getElementById('posterSliderContainer'), track: document.getElementById('posterSliderTrack'), dotsContainer: document.getElementById('posterDots'), currentSlide: 0, totalSlides: 4, autoPlayInterval: null } // Changed totalSlides to 4
     };
     document.addEventListener('DOMContentLoaded', () => { initSlider('info'); initSlider('poster'); });
     function initSlider(type) {
